@@ -22,16 +22,36 @@ def etapa1():
         print(f"El número {buscado} sí existe (posición {numeros.index(buscado)}).")
     else:
         print(f"El número {buscado} no existe en la lista.")
-
+        
+def etapa2():
+    print("\n=== ETAPA 2: Matriz 3x3 ===")
+    matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+    
+    for i in range(3):
+        for j in range(3):
+            matriz[i][j] = leer_entero(f"Ingrese el valor para  ({i}, {j}): ")
+    print ("\nMatriz ingresada:")
+    suma = 0
+    for i in range(3):
+        for j in range(3):
+            print(f"{matriz[i][j]:5}", end ="")
+            suma += matriz[i][j]
+        print()
+        
+    print(f"\nSuma de todos los elementos: {suma}")
+            
 def main():
     while True:
         print("\n=== LABORATORIO TEMA 3 ===")
         print("1. Etapa 1 - Lista unidimensional")
+        print("2. Etapa 2 - Matriz 3x3")
         print("5. Salir")
         opcion = input("Elija una opción: ")
         
         if opcion == "1":
             etapa1()
+        elif opcion == "2":
+            etapa2()
         elif opcion == "5":
             print("Fin del programa.")
             break
