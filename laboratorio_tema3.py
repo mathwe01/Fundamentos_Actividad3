@@ -78,6 +78,24 @@ def etapa3():
             break
         else:
             print("Opción no válida.")
+            
+def burbuja(lista):
+    datos = lista.copy()
+    n = len(datos)
+    for i in range(n - 1):
+        for j in range(n - i - 1):
+            if datos[j] > datos[j + 1]:
+                datos[j], datos[j + 1] = datos[j + 1], datos[j]
+    return datos
+
+def etapa4():
+    print("\n=== ETAPA 4: Ordenamiento ===")
+    desordenada = [64, 25, 12, 22, 11, 90, 5, 38]
+    print("Lista original:", desordenada)
+
+    print("\n-- Burbuja --")
+    print("Antes: ", desordenada)
+    print("Después:", burbuja(desordenada))
                     
 def main():
     while True:
@@ -85,6 +103,7 @@ def main():
         print("1. Etapa 1 - Lista unidimensional")
         print("2. Etapa 2 - Matriz 3x3")
         print("3. Etapa 3 - Operaciones sobre una lista")
+        print("4. Etapa 4 - Ordenamiento")
         print("5. Salir")
         opcion = input("Elija una opción: ")
         
@@ -94,6 +113,8 @@ def main():
             etapa2()
         elif opcion == "3":
             etapa3()
+        elif opcion == "4":
+            etapa4()
         elif opcion == "5":
             print("Fin del programa.")
             break
