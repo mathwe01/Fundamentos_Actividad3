@@ -88,6 +88,17 @@ def burbuja(lista):
                 datos[j], datos[j + 1] = datos[j + 1], datos[j]
     return datos
 
+def seleccion(lista):
+    datos = lista.copy()
+    n = len(datos)
+    for i in range(n - 1):
+        menor = i
+        for j in range(i + 1, n):
+            if datos[j] < datos[menor]:
+                menor = j
+        datos[i], datos[menor] = datos[menor], datos[i]
+    return datos
+
 def etapa4():
     print("\n=== ETAPA 4: Ordenamiento ===")
     desordenada = [64, 25, 12, 22, 11, 90, 5, 38]
@@ -96,6 +107,10 @@ def etapa4():
     print("\n-- Burbuja --")
     print("Antes: ", desordenada)
     print("Después:", burbuja(desordenada))
+    
+    print("\n-- Selección --")
+    print("Antes: ", desordenada)
+    print("Después:", seleccion(desordenada))
                     
 def main():
     while True:
