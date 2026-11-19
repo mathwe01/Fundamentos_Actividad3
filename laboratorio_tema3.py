@@ -81,36 +81,53 @@ def etapa3():
             
 def burbuja(lista):
     datos = lista.copy()
+    comparaciones = 0
+    intercambios = 0
     n = len(datos)
     for i in range(n - 1):
         for j in range(n - i - 1):
+            comparaciones += 1
             if datos[j] > datos[j + 1]:
                 datos[j], datos[j + 1] = datos[j + 1], datos[j]
-    return datos
+                intercambios += 1
+    return datos, comparaciones, intercambios
 
 def seleccion(lista):
     datos = lista.copy()
+    comparaciones = 0
+    intercambios = 0
     n = len(datos)
     for i in range(n - 1):
         menor = i
         for j in range(i + 1, n):
+            comparaciones += 1
             if datos[j] < datos[menor]:
                 menor = j
-        datos[i], datos[menor] = datos[menor], datos[i]
-    return datos
+        if menor != i:
+            datos[i], datos[menor] = datos[menor], datos[i]
+            intercambios += 1
+    return datos, comparaciones, intercambios
 
 def etapa4():
     print("\n=== ETAPA 4: Ordenamiento ===")
     desordenada = [64, 25, 12, 22, 11, 90, 5, 38]
     print("Lista original:", desordenada)
 
+    ord_b, comp_b, inter_b = burbuja(desordenada)
     print("\n-- Burbuja --")
     print("Antes: ", desordenada)
-    print("Después:", burbuja(desordenada))
-    
+    print("Después:", ord_b)
+
+    ord_s, comp_s, inter_s = seleccion(desordenada)
     print("\n-- Selección --")
     print("Antes: ", desordenada)
-    print("Después:", seleccion(desordenada))
+    print("Después:", ord_s)
+
+    print("\n-- Comparación --")
+    print(f"{'Algoritmo':<12}{'Comparaciones':>15}{'Intercambios':>15}")
+    print(f"{'Burbuja':<12}{comp_b:>15}{inter_b:>15}")
+    print(f"{'Selección':<12}{comp_s:>15}{inter_s:>15}")
+    print("¿Mismo resultado final?", "Sí" if ord_b == ord_s else "No")
                     
 def main():
     while True:
